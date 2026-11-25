@@ -306,4 +306,4 @@ socket.on("ask_bill", ({ tableId, phone }) => {
   });
 });
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => console.log(`Zaika Backend running on port ${PORT}`));
+server.listen(PORT, "0.0.0.0", () => console.log("Zaika Backend running on port " + PORT));
