@@ -1,0 +1,19 @@
+[build]
+  # The deployable site is the Vite + React app in frontend/ (npm, package-lock.json).
+  base = "frontend"
+  # Install from the lockfile first so the build doesn't depend on a separate
+  # install step having run (vite is a devDependency).
+  command = "npm ci && npm run build"
+  # Relative to base: Vite writes the production build to frontend/dist.
+  publish = "dist"
+
+[build.environment]
+  # Vite 8 requires Node ^20.19.0 || >=22.12.0.
+  NODE_VERSION = "22"
+
+# Client-side routing (react-router BrowserRouter): serve index.html for deep
+# links such as /table/3, /staff and /kitchen. Mirrors frontend/vercel.json.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
